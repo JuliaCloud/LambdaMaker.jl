@@ -1,0 +1,6 @@
+name = "Lambda"
+uuid = "8b137802-21d4-43b8-8610-b92ef2bbc330"
+version = "0.1.0"
+
+[compat]
+julia = "1"
