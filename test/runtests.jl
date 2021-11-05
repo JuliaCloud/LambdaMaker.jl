@@ -9,7 +9,7 @@ SAMPLE_FILENAME = "Dockerfile"
     try
         file_path = joinpath(RESOURCE_DIR, SAMPLE_FILENAME)
 
-        @testset "dest file dne" begin
+        @testset "dest file does not exist" begin
             LambdaMaker._copy_file(RESOURCE_DIR, SAMPLE_FILENAME)
             @test isfile(file_path)
         end
@@ -45,7 +45,7 @@ end
 @testset "create_lambda_package" begin
     project_name = "foobar"
 
-    @testset "project dne" begin
+    @testset "project does not exist" begin
         try
             create_lambda_package(project_name)
 

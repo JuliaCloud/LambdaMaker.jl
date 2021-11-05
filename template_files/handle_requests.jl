@@ -45,7 +45,7 @@ end
 function post_error(path::AbstractString, ex::Exception)
     headers = [
         "Content-type" => "application/json",
-        "Lambda-Runtime-Function-Error-Type" => "Unhandled",
+        "Lambda-Runtime-Function-Error-Type" => typeof(ex),
     ]
 
     url = "$RUNTIME_URL/$path"
