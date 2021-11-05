@@ -34,8 +34,7 @@ RUN /usr/local/julia/bin/julia --project=. -e "using Pkg; Pkg.instantiate(); Pkg
 # Copy application code
 COPY . .
 
-# Uncomment this line to allow more precompilation in lamdbda just in case.
-# That's because /var/task is a read-only path during runtime.
+# Setup the JULIA_DEPOT_PATH
 ENV JULIA_DEPOT_PATH /tmp/.julia:/var/task/.julia
 
 # Install bootstrap script
@@ -46,4 +45,4 @@ COPY bootstrap .
 WORKDIR /opt/extensions
 
 # Which module/function to call?
-CMD [ "{{{PKG}}}.handle_event"]
+CMD ["{{{PKG}}}.handle_event"]
