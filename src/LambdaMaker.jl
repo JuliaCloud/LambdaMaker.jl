@@ -10,7 +10,7 @@ struct DirectoryExists <: Exception
 end
 Base.show(io::IO, e::DirectoryExists) = println(io, e.msg)
 
-_src_path(filename::AbstractString) = joinpath("..", "template_files", filename)
+_src_path(filename::AbstractString) = joinpath(@__DIR__, "..", "template_files", filename)
 
 
 function _copy_file(dest_dir::AbstractString, filename::AbstractString; force::Bool=false)
