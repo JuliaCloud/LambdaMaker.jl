@@ -13,7 +13,7 @@ You will need to generate a new project by running,
 ```julia
 using LambdaMaker
 
-create_lambda_function("project_name")
+create_lambda_package("project_name")
 ```
 
 If a directory already exists with the `project_name`, an error is thrown and the directory is left untouched.
