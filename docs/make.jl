@@ -15,6 +15,4 @@ makedocs(;
     ],
 )
 
-deploydocs(;
-    repo="github.com/invenia/LambdaMaker.jl",
-)
+deploydocs(; repo="github.com/invenia/LambdaMaker.jl")
