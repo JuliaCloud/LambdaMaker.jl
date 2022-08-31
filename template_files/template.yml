@@ -12,7 +12,7 @@ Resources:
       Timeout: 60
     Metadata:
       Dockerfile: Dockerfile
-      DockerContext: ./template_files
+      DockerContext: .
       DockerTag: julia1.6-v1
 
 Outputs:
