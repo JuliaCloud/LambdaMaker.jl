@@ -1,8 +1,8 @@
 FROM public.ecr.aws/lambda/provided:al2
 
-ARG FOLDER=1.6
-ARG JULIA_VERSION=1.6.2
-ARG SHA256="3eb4b5775b0df1ad38f6c409e989501ab445c95bcb01ab02bd60f5bd1e823240"
+ARG FOLDER=1.8
+ARG JULIA_VERSION=1.8.2
+ARG SHA256="671cf3a450b63a717e1eedd7f69087e3856f015b2e146cb54928f19a3c05e796"
 
 WORKDIR /usr/local
 
@@ -29,7 +29,8 @@ ENV JULIA_DEPOT_PATH /var/task/.julia
 # Instantiate project and precompile packages
 COPY Manifest.toml .
 COPY Project.toml .
-RUN /usr/local/julia/bin/julia --project=. -e "using Pkg; Pkg.instantiate(); Pkg.API.precompile()"
+# LD_LIBRARY_PATH is cleared due to https://github.com/JuliaLang/julia/issues/46409
+RUN LD_LIBRARY_PATH="" /usr/local/julia/bin/julia --project=. -e "using Pkg; Pkg.instantiate(); Pkg.API.precompile()"
 
 # Copy application code
 COPY . .
