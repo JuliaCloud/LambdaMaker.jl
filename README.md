@@ -31,7 +31,21 @@ This will create a new directory in your working directory with the following fi
 You will need to modify the `src/{project_name}.jl` file to include whatever code you wish to run in the Lambda function.
 The entrypoint for Lambda will be the `handle_event(event_data, headers)` function, you will need to modify this to call the functions you wish to invoke.
 
-**Note:** If you want to specify an `ENTRYPOINT` script in the Dockerfile (e.g. to set some environment variables), you must explicitly run the bootstrap file in that script. 
+**Note:** If you want to specify an `ENTRYPOINT` script in the Dockerfile (e.g. to set some environment variables), you must explicitly run the bootstrap file in that script.
+
+Dockerfile:
+```Dockerfile
+WORKDIR /var/task
+ENTRYPOINT [ "script.sh" ]
+CMD [ "Module.function" ]
+```
+
+script.sh:
+```bash
+#!/bin/bash
+export FOO=1
+./bootstrap
+```
 
 ## Workflow for building, testing, and deploying a Lambda function
 AWS SAM documentation can be found [here](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html).
