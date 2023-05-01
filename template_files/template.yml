@@ -13,7 +13,7 @@ Resources:
     Metadata:
       Dockerfile: Dockerfile
       DockerContext: .
-      DockerTag: julia1.6-v1
+      DockerTag: julia1.8-v1
 
 Outputs:
   JuliaFunctionLambdaArn:
